@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			var device_id = "<Redacted>";
+			var access_token = "<Redacted>";
+			
+			async function callParticleFunc(colour) {
+				const response = await fetch("https://api.particle.io/v1/devices/" + device_id + "/changeLed", {
+					method: 'POST',
+					headers: {"content-type" : "application/x-www-form-urlencoded"},
+					body: "arg=" + colour + "&access_token=" + access_token
+				})
+				
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			<div>
+				<input type="checkbox" id="red" name="Red LED" onclick="callParticleFunc('red')">
+				<label for="red">Red LED</label>
+			</div>
+			<div>
+				<input type="checkbox" id="orange" name="Orange LED" onclick="callParticleFunc('orange')">
+				<label for="orange">Orange LED</label>
+			</div>
+			<div>
+				<input type="checkbox" id="green" name="Green LED" onclick="callParticleFunc('green')">
+				<label for="green">Green LED</label>
+			</div>
+		</form>
+		<p id="demo"></p>
+	</body>
+</html>
